@@ -2,36 +2,39 @@ import os
 import csv
 
 def Poll(data):
+    #Global Variables
     global Votes
     global Candidates
     global CandVotes
     global winnerV
     global winner
     
+    #tracks votes, and i and j are itteraters
     Votes = Votes+1
     i = 0
     j = 0
-    check = False
-    if data[2] not in Candidates:
+    check = False # prevents incorrect total of first candidate votes
+    if data[2] not in Candidates: # adds canidate not in list
         Candidates.append(data[2])
         CandVotes.append(1)
     else:
         for Cands in Candidates:
             if check == False:
-                if Candidates[i] == data[2]:
+                if Candidates[i] == data[2]: #keeps track of canidate votes
                     CandVotes[i] = CandVotes[i] + 1
                     i = 0
-                    check = True
+                    check = True #kicks out of if for current line
                 else:
-                    i = i + 1
-    for cands in CandVotes:
+                    i = i + 1 #goes through the the candidates list to check
+                    
+    for cands in CandVotes: #tracks who the winner is at the end
         if cands > winnerV:
             winnerV = cands
             winner = Candidates[j]
         else:
             j = j + 1
         
-def percent (info):
+def percent (info): #simple program that calculates percent for each canidate
     j = 0
     for cand in Candidates:
         x = round((CandVotes[j]/Votes) * 100,3)
@@ -50,6 +53,7 @@ with open(csvpath,encoding='UTF-8') as csvfile:
     winnerV = 0
     winner = ""
     
+    #rights to terminal
     for row in csvreader:
         Poll(row)
     percent(Candidates)
@@ -66,6 +70,8 @@ print('-------------------------')
 print("Winner: " + winner)
 print('-------------------------')
 
+
+#creates and writes to text file
 output_path = os.path.join("..", "..", "analysis", "pollcalc.txt")
 with open(output_path, 'w') as txtfile:
     txtfile.write('Election Results')
