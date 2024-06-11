@@ -5,7 +5,6 @@
 Solution scripts for the python challenges provided at the UC Berkeley Data Analytics Bootcamp.
 
 PyBank
-Python script for analyzing the financial records of a company. Given two sets of revenue data (budget_data_1.csv and budget_data_2.csv). Each dataset is composed of two columns: Date and Revenue.
 
 Created a Python script that analyzes the records to calculate each of the following:
 
@@ -25,8 +24,6 @@ Results:
 
 PyPoll
 Python script for helping a small, rural town modernize its vote-counting process.
-
-Given two sets of poll data (election_data_1.csv and election_data_2.csv). Each dataset is composed of three columns: Voter ID, County, and Candidate.
 
 Created a Python script that analyzes the votes and calculates each of the following:
 
